@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Saludo AR</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+
+    <!-- AR.js -->
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Escena de A-Frame con AR habilitado -->
+    <a-scene
+      embedded
+      arjs="sourceType: webcam;"
+      xr-mode-ui="XRMode: xr;"
+    >
+      <!-- Luces -->
+      <a-light type="ambient" color="#ffffff"></a-light>
+      <a-light type="directional" position="1 1 1"></a-light>
+
+      <!-- Avatar de Ready Player Me -->
+      <a-entity
+        id="avatar"
+        gltf-model="https://models.readyplayer.me/68f3bfff0e54a41a64954e3a.glb"
+        scale="0.5 0.5 0.5"
+        position="0 0 -2"
+        rotation="0 180 0"
+        animation__saludo="property=rotation; to=0 200 0; dir=alternate; dur=2000; loop=true; easing=easeInOutSine"
+      ></a-entity>
+
+      <!-- Texto de saludo -->
+      <a-text
+        value="¡Hola! Soy tu avatar en AR 👋"
+        position="0 1.5 -2"
+        align="center"
+        color="orange"
+      ></a-text>
+
+      <!-- Cámara -->
+      <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
+  </body>
+</html>
